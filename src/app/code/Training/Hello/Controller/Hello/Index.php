@@ -1,6 +1,6 @@
 <?php
 
-namespace Training\Hello\Controller\Index;
+namespace Training\Hello\Controller\Hello;
 
 use Magento\Framework\App\Action\Action;
 
