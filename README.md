@@ -168,21 +168,128 @@ to implementations, adding to lists (CommandList), and registering plugins.
 
 *In progress...*
 
-### 7 — Model, Repository, DB Table
+Hooks into any public method of any class without modifying the original.
+Three types: `before`, `after`, and `around`.
 
-*Coming soon...*
+```
+app/code/Training/Hello/
+  Plugin/ProductSaveLog.php
+  etc/di.xml  (updated)
+```
+
+**Key concept:** The plugin method name follows the convention `before{MethodName}`,
+`after{MethodName}`, or `around{MethodName}`. The first parameter is always
+`$subject` (the intercepted object). Return all original arguments as an array
+in `before` plugins.
+
+**Test:** Save a product via admin, then check `var/log/training_product_saves.log`
+
+### 7 — Custom DB Table + Model + Repository
+
+Creates a custom flat table via declarative schema (`db_schema.xml`), a model
+extending `AbstractModel`, a resource model, a collection, and a repository
+implementing the service contract pattern.
+
+```
+app/code/Training/Hello/
+  etc/db_schema.xml
+  Model/Quote.php
+  Model/ResourceModel/Quote.php
+  Model/ResourceModel/Quote/Collection.php
+  Api/Data/QuoteInterface.php
+  Api/QuoteRepositoryInterface.php
+  Model/QuoteRepository.php
+  etc/di.xml  (updated)
+```
+
+**Key concept:** In Magento 2.3+, database tables are declared via `db_schema.xml`
+(no more InstallSchema scripts). The repository pattern separates data access
+from business logic via interfaces (service contracts).
+
+**Test:** `docker exec -it compose-phpfpm-1 bin/magento setup:db:status`
 
 ### 8 — Events & Observers
 
-*Coming soon...*
+Dispatches a custom event and observes a core event. Demonstrates the
+`events.xml` configuration and observer classes.
+
+```
+app/code/Training/Hello/
+  Observer/LogPageView.php
+  Observer/ProductSaved.php
+  etc/events.xml
+  etc/di.xml  (updated)
+```
+
+**Key concept:** Events are Magento's pub/sub system. Dispatch in your code with
+`$eventManager->dispatch('event_name', ['data' => $data])`. Observe by mapping
+the event name to an observer class in `events.xml`.
+
+**Test:** `docker exec -it compose-phpfpm-1 tail -f var/log/system.log`
 
 ### 9 — Admin Grid Page
 
-*Coming soon...*
+Creates an admin page with a UI component listing grid. Covers admin routes,
+menu registration, UI component XML, and a data provider.
+
+```
+app/code/Training/Hello/
+  etc/adminhtml/routes.xml
+  etc/adminhtml/menu.xml
+  Controller/Adminhtml/Quotes/Index.php
+  view/adminhtml/layout/training_hello_quotes_index.xml
+  view/adminhtml/ui_component/training_hello_quotes_listing.xml
+  Model/ResourceModel/Quote/Grid/Collection.php
+```
+
+**Key concept:** Admin grids use Magento's UI Components framework — declarative
+XML that defines columns, filters, sorting, and data sources. No manual HTML
+table rendering.
+
+**Test:** Navigate to Admin → Training → Quotes
 
 ### 10 — GraphQL Query + Resolver
 
-*Coming soon...*
+Exposes a custom GraphQL query to fetch data from the module. Covers
+`schema.graphqls`, resolver classes, and the GraphQL module wiring.
+
+```
+app/code/Training/Hello/
+  etc/graphql/
+    di.xml
+  Model/Resolver/Quotes.php
+  etc/schema.graphqls
+  etc/module.xml  (updated)
+```
+
+**Key concept:** Magento 2.3+ uses declarative GraphQL. Define the schema in
+`.graphqls` files and implement resolvers via DI. The resolver receives `$context`
+and `$value` per GraphQL conventions.
+
+**Test:** `curl -sk https://magento.test/graphql -H "Content-Type: application/json" -d '{"query":"{ trainingQuotes { items { quote } } }"}'`
+
+### 11 — Debugging Practice
+
+Practical debugging session covering:
+- Reading `var/log/system.log` and `var/log/exception.log`
+- Following stack traces to find root causes
+- Using the Xdebug container (`compose-phpfpm-xdebug-1`) with breakpoints
+- `bin/magento dev:di:info` to inspect DI configuration
+- `n98-magerun2 dev:console` for interactive PHP
+
+**Test:** Trigger a deliberate error in the module, then trace and fix it.
+
+### 12 — Architecture Walk-Through
+
+No-code interview prep. Questions answered with Magento architecture patterns:
+- "How would you customize the checkout?"
+- "How do you add a new step to order placement?"
+- "How would you integrate a third-party payment gateway?"
+- "Explain the request flow from URL to rendered page."
+- "How do you handle a module upgrade with database changes?"
+
+**Key concept:** Magento interviews focus on knowing WHERE to make changes
+(plugins, observers, preferences, layouts) and WHY — not memorizing exact APIs.
 
 ---
 
