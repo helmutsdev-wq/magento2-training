@@ -36,17 +36,25 @@
     }
   ],
   "intelephense.files.maxSize": 20000000,
+  "php-cs-fixer.executablePath": "vendor/bin/php-cs-fixer",
+  "php-cs-fixer.onsave": false,
   "intelephense.files.exclude": [
     "**/.git/**",
     "**/pub/media/**",
     "**/pub/static/**",
     "**/dev/**",
     "**/var/**",
-    "**/lib/**"
+    "**/lib/**",
+    "**/generated/**"
   ],
   "intelephense.environment.phpVersion": "8.4.0",
+  "editor.rulers": [120],
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 120,
+  "[php]": {
+    "editor.defaultFormatter": "junstyle.php-cs-fixer"
+  },
   "intelephense.environment.includePaths": [
-    "vendor/magento/framework",
-    "generated/code"
+    "vendor/magento/framework"
   ]
 }

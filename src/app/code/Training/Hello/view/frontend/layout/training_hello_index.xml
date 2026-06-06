@@ -1,11 +1,20 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <title>Welcome back Magento Ninja!</title>
     </head>
     <body>
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template" name="training.hello" template="Training_Hello::hello.phtml"/>
+            <block class="Magento\Framework\View\Element\Template"
+                name="training.hello"
+                template="Training_Hello::hello.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">
+                        Training\Hello\ViewModel\Hello
+                    </argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>

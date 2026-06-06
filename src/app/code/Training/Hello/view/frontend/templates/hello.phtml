@@ -1,1 +1,15 @@
+
+
 <h1>Hello from the frontend, Magento Ninja!</h1>
+
+<?php
+use Training\Hello\ViewModel\Hello;
+/** @var Hello $viewModel */
+$viewModel = $block->getData('view_model');
+
+if (!$viewModel) {
+    throw new \Magento\Framework\Exception\LocalizedException(__('View model is not set'));
+}
+
+echo $viewModel->getGreeting() . 'Product count: ' . $viewModel->getProductCount();
+?>
