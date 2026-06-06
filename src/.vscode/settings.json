@@ -1,0 +1,52 @@
+{
+  "xml.catalogs": ["catalog.xml"],
+  "xml.validation.noGrammar": "ignore",
+  "xml.fileAssociations": [
+    {
+      "pattern": "**/etc/module.xml",
+      "systemId": "vendor/magento/framework/Module/etc/module.xsd"
+    },
+    {
+      "pattern": "**/etc/frontend/routes.xml",
+      "systemId": "vendor/magento/framework/App/etc/routes.xsd"
+    },
+    {
+      "pattern": "**/etc/adminhtml/routes.xml",
+      "systemId": "vendor/magento/framework/App/etc/routes.xsd"
+    },
+    {
+      "pattern": "**/view/frontend/layout/*.xml",
+      "systemId": "vendor/magento/framework/View/Layout/etc/page_configuration.xsd"
+    },
+    {
+      "pattern": "**/view/adminhtml/layout/*.xml",
+      "systemId": "vendor/magento/framework/View/Layout/etc/page_configuration.xsd"
+    },
+    {
+      "pattern": "**/etc/events.xml",
+      "systemId": "vendor/magento/framework/Event/etc/events.xsd"
+    },
+    {
+      "pattern": "**/etc/di.xml",
+      "systemId": "vendor/magento/framework/ObjectManager/etc/config.xsd"
+    },
+    {
+      "pattern": "**/etc/acl.xml",
+      "systemId": "vendor/magento/framework/Acl/etc/acl.xsd"
+    }
+  ],
+  "intelephense.files.maxSize": 20000000,
+  "intelephense.files.exclude": [
+    "**/.git/**",
+    "**/pub/media/**",
+    "**/pub/static/**",
+    "**/dev/**",
+    "**/var/**",
+    "**/lib/**"
+  ],
+  "intelephense.environment.phpVersion": "8.4.0",
+  "intelephense.environment.includePaths": [
+    "vendor/magento/framework",
+    "generated/code"
+  ]
+}

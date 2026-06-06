@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+    <rewriteSystem
+        systemIdStartString="urn:magento:framework:"
+        rewritePrefix="vendor/magento/framework/"/>
+
+    <rewriteSystem
+        systemIdStartString="urn:magento:framework-message-queue:"
+        rewritePrefix="vendor/magento/framework-message-queue/"/>
+
+    <system
+        systemId="urn:magento:module:Magento_Catalog:etc/product_options.xsd"
+        uri="vendor/magento/module-catalog/etc/product_options.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Catalog:etc/catalog_attributes.xsd"
+        uri="vendor/magento/module-catalog/etc/catalog_attributes.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Eav:etc/eav_attributes.xsd"
+        uri="vendor/magento/module-eav/etc/eav_attributes.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Cron:etc/crontab.xsd"
+        uri="vendor/magento/module-cron/etc/crontab.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Backend:etc/menu.xsd"
+        uri="vendor/magento/module-backend/etc/menu.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Config:etc/system_file.xsd"
+        uri="vendor/magento/module-config/etc/system_file.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Config:etc/system.xsd"
+        uri="vendor/magento/module-config/etc/system.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Store:etc/config.xsd"
+        uri="vendor/magento/module-store/etc/config.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Payment:etc/payment.xsd"
+        uri="vendor/magento/module-payment/etc/payment.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Sales:etc/sales.xsd"
+        uri="vendor/magento/module-sales/etc/sales.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Widget:etc/widget.xsd"
+        uri="vendor/magento/module-widget/etc/widget.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_Webapi:etc/webapi.xsd"
+        uri="vendor/magento/module-webapi/etc/webapi.xsd"/>
+    <system
+        systemId="urn:magento:module:Magento_ImportExport:etc/import.xsd"
+        uri="vendor/magento/module-import-export/etc/import.xsd"/>
+
+</catalog>
