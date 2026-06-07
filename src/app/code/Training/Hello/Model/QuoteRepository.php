@@ -3,6 +3,7 @@ namespace Training\Hello\Model;
 
 use Training\Hello\Api\Data\QuoteInterface;
 use Training\Hello\Api\QuoteRepositoryInterface;
+use Training\Hello\Model\Quote as QuoteModel;
 use Training\Hello\Model\ResourceModel\Quote as QuoteResource;
 use Training\Hello\Model\ResourceModel\Quote\CollectionFactory;
 use Magento\Framework\Api\SearchCriteriaInterface;
@@ -30,12 +31,14 @@ class QuoteRepository implements QuoteRepositoryInterface
 
     public function save(QuoteInterface $quote): QuoteInterface
     {
+        /** @var QuoteModel $quote */
         $this->resource->save($quote);
         return $quote;
     }
 
     public function getById(int $id): QuoteInterface
     {
+        /** @var QuoteModel $quote */
         $quote = $this->quoteFactory->create();
         $this->resource->load($quote, $id);
         if (!$quote->getQuoteId()) {
@@ -70,6 +73,7 @@ class QuoteRepository implements QuoteRepositoryInterface
 
     public function delete(QuoteInterface $quote): bool
     {
+        /** @var QuoteModel $quote */
         $this->resource->delete($quote);
         return true;
     }

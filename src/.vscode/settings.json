@@ -36,8 +36,6 @@
     }
   ],
   "intelephense.files.maxSize": 20000000,
-  "php-cs-fixer.executablePath": "vendor/bin/php-cs-fixer",
-  "php-cs-fixer.onsave": false,
   "intelephense.files.exclude": [
     "**/.git/**",
     "**/pub/media/**",
@@ -45,7 +43,8 @@
     "**/dev/**",
     "**/var/**",
     "**/lib/**",
-    "**/generated/**",
+    "**/generated/code/Magento/**",
+    "**/generated/metadata/**",
     "**/vendor/magento/magento2-base/dev/**",
     "**/vendor/rector/**",
     "**/vendor/phpunit/**",
@@ -60,7 +59,4 @@
   "editor.rulers": [120],
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
-  "[php]": {
-    "editor.defaultFormatter": "junstyle.php-cs-fixer"
-  }
 }
