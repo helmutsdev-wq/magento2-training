@@ -45,7 +45,16 @@
     "**/dev/**",
     "**/var/**",
     "**/lib/**",
-    "**/generated/**"
+    "**/generated/**",
+    "**/vendor/magento/magento2-base/dev/**",
+    "**/vendor/rector/**",
+    "**/vendor/phpunit/**",
+    "**/vendor/squizlabs/**",
+    "**/vendor/phpspec/**",
+    "**/vendor/behat/**",
+    "**/vendor/sebastian/**",
+    "**/vendor/giggsey/**",
+    "**/vendor/aws/**"
   ],
   "intelephense.environment.phpVersion": "8.4.0",
   "editor.rulers": [120],
@@ -53,8 +62,5 @@
   "editor.wordWrapColumn": 120,
   "[php]": {
     "editor.defaultFormatter": "junstyle.php-cs-fixer"
-  },
-  "intelephense.environment.includePaths": [
-    "vendor/magento/framework"
-  ]
+  }
 }
